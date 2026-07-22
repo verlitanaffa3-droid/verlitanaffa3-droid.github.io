@@ -224,12 +224,16 @@
         btnKirim.classList.toggle("d-none");
         fetch(scriptURL, { method: "POST", body: new FormData(form) })
           .then((response) => response.json())
+<<<<<<< HEAD
           .then((response) => {
             // tampilkan tombol kirim,hilangkan tombol loading
             btnLoading.classList.toggle("d-none");
             btnKirim.classList.toggle("d-none");
             console.log("Success!", response);
           })
+=======
+          .then((response) => console.log("Success!", response))
+>>>>>>> 0eee5a66e3010aa71551df263df7607792fb864f
           .catch((error) => console.error("Error!", error.message));
       });
     </script>
