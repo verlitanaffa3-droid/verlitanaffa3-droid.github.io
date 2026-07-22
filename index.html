@@ -211,30 +211,38 @@
 
     <script>
       const scriptURL = "https://script.google.com/macros/s/AKfycbz-92bR-qexPb8g_w1w1NP0howjXdaHC752UDkwrJi2MOOjzANRqsDsx22wlCtHvZEq/exec";
+
       const form = document.forms["wpu-contact-form"];
-      const btnKirim = document.querySelector(".btnKirim");
-      const btnLoading = document.querySelector(".btnLoading");
+      const btnKirim = document.querySelector(".btn-kirim");
+      const btnLoading = document.querySelector(".btn-loading");
       const myAlert = document.querySelector(".my-alert");
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        // ketika tombol submit diklik
-        // tampilkan tombol loading,hilangkan tombol kirim
+
         btnLoading.classList.toggle("d-none");
         btnKirim.classList.toggle("d-none");
-        fetch(scriptURL, { method: "POST", body: new FormData(form) })
-          .then((response) => response.json())
-<<<<<<< HEAD
-          .then((response) => {
-            // tampilkan tombol kirim,hilangkan tombol loading
+
+        fetch(scriptURL, {
+          method: "POST",
+          body: new FormData(form),
+        })
+          .then((response) => response.text())
+          .then((result) => {
             btnLoading.classList.toggle("d-none");
             btnKirim.classList.toggle("d-none");
-            console.log("Success!", response);
+
+            myAlert.classList.remove("d-none");
+            form.reset();
+
+            console.log(result);
           })
-=======
-          .then((response) => console.log("Success!", response))
->>>>>>> 0eee5a66e3010aa71551df263df7607792fb864f
-          .catch((error) => console.error("Error!", error.message));
+          .catch((error) => {
+            btnLoading.classList.toggle("d-none");
+            btnKirim.classList.toggle("d-none");
+
+            console.error(error);
+          });
       });
     </script>
   </body>
