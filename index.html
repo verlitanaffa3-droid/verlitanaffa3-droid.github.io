@@ -220,8 +220,8 @@
       form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        btnLoading.classList.toggle("d-none");
-        btnKirim.classList.toggle("d-none");
+        btnLoading.classList.remove("d-none");
+        btnKirim.classList.add("d-none");
 
         fetch(scriptURL, {
           method: "POST",
@@ -229,9 +229,8 @@
         })
           .then((response) => response.text())
           .then((result) => {
-            btnLoading.classList.toggle("d-none");
-            btnKirim.classList.toggle("d-none");
-
+            btnLoading.classList.add("d-none");
+            btnKirim.classList.remove("d-none");
             myAlert.classList.remove("d-none");
             form.reset();
 
