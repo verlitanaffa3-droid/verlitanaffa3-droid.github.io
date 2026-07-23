@@ -237,10 +237,11 @@
             console.log(result);
           })
           .catch((error) => {
-            btnLoading.classList.toggle("d-none");
-            btnKirim.classList.toggle("d-none");
-
+            alert(error);
             console.error(error);
+
+            btnLoading.classList.add("d-none");
+            btnKirim.classList.remove("d-none");
           });
       });
     </script>
